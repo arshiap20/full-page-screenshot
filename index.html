@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full Page Screenshot — capture the whole page in one image</title>
+<meta name="description" content="A Chrome extension that captures full pages, areas or elements, lets you annotate them, add device mockups, and export as PNG, JPEG, WebP or PDF. Everything stays on your device.">
+<meta property="og:title" content="Full Page Screenshot">
+<meta property="og:description" content="Capture the whole page in one image. Annotate, frame and export, all on your device.">
+<meta property="og:image" content="img/og.png">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0c10" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/icon-128.png">
+<link rel="preload" href="fonts/bricolage-grotesque-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="img/icon.svg" alt="" width="28" height="28">Full Page Screenshot</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#capture">Capture</a>
+      <a href="#edit">Edit</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="button small" href="https://chromewebstore.google.com/detail/jdoknmnhhldggknpickmcmholibmddpi">Add to Chrome</a>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>The whole page. <em>One image.</em></h1>
+        <p class="lead">Full Page Screenshot scrolls the page for you, waits for images to load, and stitches everything into one sharp screenshot. Then mark it up, frame it, and export it.</p>
+        <div class="actions">
+          <a class="button" href="https://chromewebstore.google.com/detail/jdoknmnhhldggknpickmcmholibmddpi">Add to Chrome, it's free</a>
+          <span class="hint">or press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>S</kbd> on any page</span>
+        </div>
+      </div>
+      <div class="finder" aria-label="A long web page being captured from top to bottom">
+        <div class="finder-screen"><img id="finder-page" src="img/capture-full.webp" width="880" height="3356" alt=""></div>
+        <div class="finder-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="finder-readout" id="finder-readout" aria-hidden="true"><span class="dot"></span><span id="finder-label">Capturing</span><b id="finder-size">1280 × 4881 px</b></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="capture">
+    <div class="wrap row">
+      <div>
+        <p class="eyebrow">Capture</p>
+        <h2>Pick what to capture, then click once</h2>
+        <p class="intro">Choose a mode in the popup, or use the keyboard shortcut to capture the full page right away.</p>
+        <dl class="modes">
+          <div><dt>Full page</dt><dd>The whole scrollable page, without repeated sticky headers or chat bubbles.</dd></div>
+          <div><dt>Visible</dt><dd>Exactly what is on screen right now.</dd></div>
+          <div><dt>Area</dt><dd>Drag a rectangle or snap to an element, then set an exact size.</dd></div>
+          <div><dt>Element</dt><dd>Everything inside a scrolling panel, like a chat or a feed.</dd></div>
+        </dl>
+        <div class="tools">
+          <span>Desktop, tablet or mobile</span><span>3, 5 or 10 s delay</span><span>Hide banners first</span><span>Right-click to capture</span>
+        </div>
+      </div>
+      <div class="capture-pair">
+        <picture>
+          <source srcset="img/popup-dark.webp" media="(prefers-color-scheme: dark)">
+          <img class="frame popup" src="img/popup-light.webp" width="640" height="1348" alt="The extension popup with the Full page, Visible, Area and Element modes, device and delay options, and recent screenshots">
+        </picture>
+        <div class="tall">
+          <div class="frame"><img src="img/capture-full.webp" width="880" height="3356" alt="A full landing page captured as one tall image" loading="lazy"></div>
+          <span class="tag">1280 × 4881 px</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="parts">
+    <div class="wrap">
+      <p class="eyebrow">Area &amp; element</p>
+      <h2>Or just the part you need</h2>
+      <p class="intro">Select a region with handles and exact pixel sizes, or click a panel that scrolls on its own to get all of its content.</p>
+      <div class="duo">
+        <figure>
+          <img class="frame" src="img/pick-area.webp" width="1600" height="1000" alt="Dragging a capture area over a dashboard, with a 772 by 266 size readout and Capture button" loading="lazy">
+          <figcaption><b>Area</b><span>Drag, resize, nudge with the arrow keys, or lock 1:1, 4:3, 16:9 or 9:16.</span></figcaption>
+        </figure>
+        <figure>
+          <div class="with-result">
+            <img class="frame" src="img/pick-element.webp" width="1600" height="1000" alt="Hovering a chat's message list, labelled as a scrolling element 1040 by 1641 pixels" loading="lazy">
+            <div class="result"><img src="img/element-result.webp" width="520" height="820" alt="The whole conversation captured as one image" loading="lazy"><span class="tag">1040 × 1641</span></div>
+          </div>
+          <figcaption><b>Element</b><span>The whole conversation, not just the messages you can see.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="edit">
+    <div class="wrap">
+      <p class="eyebrow">Edit</p>
+      <h2>Point out what matters before you share</h2>
+      <p class="intro">Every capture opens in an editor. Blur emails and names, number the steps, and crop to the part that counts.</p>
+      <div class="tools">
+        <span>Arrow</span><span>Rectangle</span><span>Pen</span><span>Highlighter</span><span>Text</span><span>Step numbers</span><span>Blur</span><span>Spotlight</span><span>Magnifier</span><span>Crop</span>
+      </div>
+      <img class="frame wide" src="img/editor.webp" width="1800" height="879" alt="The editor with a pricing card spotlighted, a red box around the price, an arrow, a Best value label and numbered steps" loading="lazy">
+    </div>
+  </section>
+
+  <section id="mockups">
+    <div class="wrap row flip">
+      <div>
+        <p class="eyebrow">Mockups</p>
+        <h2>Put it in a phone, tablet or browser</h2>
+        <p class="intro">Pick a frame and a background: a color, a gradient, a blur of the screenshot, your own image, or none. Ready for slides, docs and posts.</p>
+      </div>
+      <img class="frame" src="img/mockup.webp" width="1800" height="1125" alt="The mockup panel showing a mobile capture inside a phone frame on a pink gradient" loading="lazy">
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <p class="eyebrow">Gallery &amp; export</p>
+      <h2>Your last 25 screenshots, one click away</h2>
+      <p class="intro">Search by title or site, compress large files with a live size preview, and download as PNG, JPEG, WebP or one PDF. The gallery, popup and editor follow your light or dark theme.</p>
+      <picture>
+        <source srcset="img/gallery-dark.webp" media="(prefers-color-scheme: dark)">
+        <img class="frame wide" src="img/gallery-light.webp" width="1800" height="1125" alt="The screenshot gallery with a Compress panel estimating 253 KB from 680 KB" loading="lazy">
+      </picture>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap">
+      <p class="eyebrow">Privacy</p>
+      <h2>Your screenshots never leave your computer</h2>
+      <div class="facts">
+        <div><b>No uploads</b><p>The extension makes no network requests. Captures are saved in your browser only.</p></div>
+        <div><b>No account</b><p>Nothing to sign up for, no analytics, no ads.</p></div>
+        <div><b>Only when you ask</b><p>It reads a page only after you start a capture on it.</p></div>
+      </div>
+      <a class="textlink" href="privacy.html">Read the privacy policy</a>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <p class="eyebrow">Questions</p>
+      <h2>Good to know</h2>
+      <div class="faq">
+        <details>
+          <summary>Why does Chrome say the extension "started debugging this browser"?</summary>
+          <p>To capture beyond the visible screen at full quality and to render tablet or mobile layouts, the extension uses Chrome's DevTools protocol on the tab you're capturing. Chrome shows that bar whenever this happens. The extension disconnects as soon as the capture is done.</p>
+        </details>
+        <details>
+          <summary>Are there pages it can't capture?</summary>
+          <p>Chrome doesn't let extensions capture its own pages, such as chrome:// settings pages and the Chrome Web Store. Every regular website works. If DevTools is open on the tab, close it first.</p>
+        </details>
+        <details>
+          <summary>Where are my screenshots saved?</summary>
+          <p>In your browser, inside the extension's own storage. The 25 most recent are kept. Download the ones you want to keep for good, or delete any of them yourself.</p>
+        </details>
+        <details>
+          <summary>Some images are missing from my capture. What can I do?</summary>
+          <p>The extension waits for images and fonts before capturing and shows what's still loading. On very slow pages, wait for that progress to finish instead of pressing Capture now.</p>
+        </details>
+        <details>
+          <summary>Can I change the keyboard shortcut?</summary>
+          <p>Yes. Open the popup and click the keyboard icon, or go to chrome://extensions/shortcuts.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <h2>Capture your first full page</h2>
+      <p class="intro" style="margin-inline:auto">Free, no account, nothing uploaded.</p>
+      <div class="actions"><a class="button" href="https://chromewebstore.google.com/detail/jdoknmnhhldggknpickmcmholibmddpi">Add to Chrome</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Full Page Screenshot</span>
+    <nav aria-label="Footer">
+      <a href="privacy.html">Privacy policy</a>
+      <a href="https://github.com/arshiap20">GitHub</a>
+      <a href="https://chromewebstore.google.com/detail/jdoknmnhhldggknpickmcmholibmddpi">Chrome Web Store</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
